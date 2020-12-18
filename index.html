@@ -1,0 +1,89 @@
+<html>
+	<head>
+		<title>Calculator</title>
+
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+		<link rel="stylesheet" href="style.css">
+  </head>
+
+  <body style="background: #D9D9D9">
+
+    <div class="container">
+      <div class="row">
+        <div class="col d-flex justify-content-center">
+          <br />
+
+          <div class="calculator">
+            <input id="result" type="text" class="form-control result" placeholder="0" disabled="disabled" />
+            
+            <div class="row">
+              <button onclick="calculate('action', 'c')" type="button" class="btn btn-dark btn-lg clear font-weight-light">C</button>
+              <button onclick="calculate('action', '/')" type="button" class="btn btn-dark btn-lg font-weight-light">/</button>
+              <button onclick="calculate('action', '*')" type="button" class="btn btn-dark btn-lg font-weight-light">x</button>
+            </div>
+
+            <div class="row">
+              <button onclick="calculate('val', 7)" type="button" class="btn btn-dark btn-lg font-weight-light">7</button>
+              <button onclick="calculate('val', 8)" type="button" class="btn btn-dark btn-lg font-weight-light">8</button>
+              <button onclick="calculate('val', 9)" type="button" class="btn btn-dark btn-lg font-weight-light">9</button>
+              <button onclick="calculate('action', '-')"type="button" class="btn btn-dark btn-lg font-weight-light">-</button>
+            </div>
+            
+            <div class="row">
+              <button onclick="calculate('val', 4)" type="button" class="btn btn-dark btn-lg font-weight-light">4</button>
+              <button onclick="calculate('val', 5)" type="button" class="btn btn-dark btn-lg font-weight-light">5</button>
+              <button onclick="calculate('val', 6)" type="button" class="btn btn-dark btn-lg font-weight-light">6</button>
+              <button onclick="calculate('action', '+')" type="button" class="btn btn-dark btn-lg font-weight-light">+</button>
+            </div>
+
+            <div class="row">
+              <button onclick="calculate('val', 1)" type="button" class="btn btn-dark btn-lg font-weight-light">1</button>
+              <button onclick="calculate('val', 2)" type="button" class="btn btn-dark btn-lg font-weight-light">2</button>
+              <button onclick="calculate('val', 3)" type="button" class="btn btn-dark btn-lg font-weight-light">3</button>
+              <button onclick="calculate('action', '=')"type="button" class="btn btn-dark btn-lg enter">=</button>
+            </div>
+
+            <div class="row" style="margin-top: -60px">
+              <button onclick="calculate('val', 0)"type="button" class="btn btn-dark zero btn-lg font-weight-light">0</button>
+              <button onclick="calculate('action', '.')"type="button" class="btn btn-dark btn-lg font-weight-light">.</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div> 
+    <script type="text/javascript">
+      function calculate(type, val){
+        if (type === 'action'){
+
+          if(val === 'c'){
+
+            document.getElementById('result').value = ''
+
+          }
+
+          if(val === '+' || val === '-' || val === '/' || val === '*' || val === '.'){
+
+            document.getElementById('result').value += val 
+
+          }
+
+          if (val === '='){
+
+            var valDisplay = document.getElementById('result').value
+            valDisplay = eval(valDisplay)
+            document.getElementById('result').value = valDisplay
+
+          }
+
+        } else if (type === 'val'){
+
+          document.getElementById('result').value += val
+
+        }
+      }
+    </script>   
+  </body>	
+
+</html>
